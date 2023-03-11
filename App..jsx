@@ -35,7 +35,7 @@ const App = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen
+        {/* <Stack.Screen
           name="Landingscreen"
           component={LandingScreen}
           options={{
@@ -106,8 +106,8 @@ const App = () => {
             },
             title: "Register Here",
           }}
-        ></Stack.Screen>
-
+        ></Stack.Screen> */}
+        <Stack.Screen name="Homemarwan" component={OwnerHome}></Stack.Screen>
         <Stack.Screen
           name="Home"
           component={Home}
@@ -121,24 +121,20 @@ const App = () => {
             },
             title: "",
             headerRight: () => (
-              <View
+              <Avatar.Image
+                source={{
+                  uri: "https://cdn.shopify.com/s/files/1/0248/2002/3381/articles/Runners-youtube-DangerousSport_600x600_ab197b16-1b9b-4c07-b354-2d1ddcc1ade3.jpg?v=1674242092",
+                }}
+                size={40}
                 style={{
-                  top: 0,
-                  borderWidth: 3,
-                  borderRadius: 20,
+                  top: -3,
+                  borderWidth: 2.5,
 
                   borderColor: "orange",
 
                   borderStyle: "solid",
                 }}
-              >
-                <Avatar.Image
-                  source={{
-                    uri: "https://www.rd.com/wp-content/uploads/2017/09/01-shutterstock_476340928-Irina-Bg.jpg?fit=640,427",
-                  }}
-                  size={30}
-                />
-              </View>
+              />
             ),
           }}
         ></Stack.Screen>
@@ -146,7 +142,7 @@ const App = () => {
           name="Allterrains"
           component={Allterrains}
           options={{
-            title: "",
+            title: "Allterrains",
             statusBarColor: "black",
             headerStyle: {
               backgroundColor: "black",
@@ -156,24 +152,13 @@ const App = () => {
             },
             headerTintColor: "orange",
             headerRight: () => (
-              <View
-                style={{
-                  top: 0,
-                  borderWidth: 3,
-                  borderRadius: 20,
-
-                  borderColor: "orange",
-
-                  borderStyle: "solid",
+              <Avatar.Image
+                source={{
+                  uri: "https://static.vecteezy.com/system/resources/thumbnails/001/504/972/small/search-icon-free-vector.jpg",
                 }}
-              >
-                <Avatar.Image
-                  source={{
-                    uri: "https://www.rd.com/wp-content/uploads/2017/09/01-shutterstock_476340928-Irina-Bg.jpg?fit=640,427",
-                  }}
-                  size={30}
-                />
-              </View>
+                size={40}
+                style={{ top: -5 }}
+              />
             ),
           }}
         ></Stack.Screen>
@@ -191,32 +176,37 @@ const App = () => {
             headerTintColor: "orange",
             title: "Oneterrain",
             headerRight: () => (
-              <View
-                style={{
-                  top: 0,
-                  borderWidth: 3,
-                  borderRadius: 20,
-
-                  borderColor: "orange",
-
-                  borderStyle: "solid",
+              <Avatar.Image
+                source={{
+                  uri: "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png",
                 }}
-              >
-                <Avatar.Image
-                  source={{
-                    uri: "https://www.rd.com/wp-content/uploads/2017/09/01-shutterstock_476340928-Irina-Bg.jpg?fit=640,427",
-                  }}
-                  size={30}
-                />
-              </View>
+                size={40}
+                style={{ top: -5 }}
+              />
             ),
           }}
         ></Stack.Screen>
-        {/* <Stack.Screen
+
+        <Stack.Screen name="SignUpScreen" component={SignUpScreen} />
+        <Stack.Screen
+          name="HomeScreen"
+          component={HomeSceen}
+          options={{
+            headerStyle: {
+              backgroundColor: "black",
+            },
+            headerTitleStyle: {
+              color: "orange",
+            },
+            title: "Home",
+            headerShown: "Home",
+          }}
+        />
+        <Stack.Screen
           name="Reservation"
           component={Reservation}
           options={{ title: "Reservation" }}
-        ></Stack.Screen>*/}
+        ></Stack.Screen>
         <Stack.Screen
           name="AppointmentScheduler"
           component={AppointmentScheduler}
@@ -232,22 +222,11 @@ const App = () => {
           component={Confirmation}
           options={{ title: "Confirmation", headerShown: false }}
         ></Stack.Screen>
-        <Stack.Screen
+        {/* <Stack.Screen
           name="Mapplayer"
           component={Mapplayer}
-          options={{
-            title: "Mapplayer",
-            statusBarColor: "black",
-            headerStyle: {
-              backgroundColor: "black",
-            },
-            headerTitleStyle: {
-              color: "orange",
-            },
-            headerTintColor: "orange",
-            title: "Get your directions !",
-          }}
-        ></Stack.Screen>
+          options={{ title: "Mapplayer", headerShown: false }}
+        ></Stack.Screen> */}
         {/* <Stack.Screen
           name="HandleOwnerTerrains"
           component={HandleOwnerTerrains}
