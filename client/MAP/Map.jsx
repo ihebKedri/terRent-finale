@@ -80,7 +80,7 @@ const Map=({navigation:{navigate}})=> {
      
       
       query={{
-        key: '',
+        key: 'AIzaSyB3gw78dU8-sOg2nzSiHi4-7LUgEedSasM',
         language: 'en',
         types:"establishment",
         radius:30000,
@@ -107,7 +107,7 @@ const Map=({navigation:{navigate}})=> {
     
    
 
-    {/* this for the current location */}
+ 
     
     <Marker coordinate={{
       latitude:regin.latitude,longitude:regin.longitude}} 

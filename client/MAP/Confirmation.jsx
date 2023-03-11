@@ -58,11 +58,7 @@ const Confirmation = ( {navigation,route}) => {
         value={description}
         onChangeText={setDescription}
       />
-      {/* <TextInput
-        placeholder="Location"
-        value={location}
-        onChangeText={setLocation}
-      /> */}
+      
       <TextInput
         placeholder="Region"
         value={region}

@@ -9,7 +9,9 @@ module.exports=(sequelize,DataTypes)=>{
           long:{type: DataTypes.DECIMAL(10,5)},
           Region:{type:DataTypes.STRING},
           Category:{type:DataTypes.STRING},
-          Images:{type:DataTypes.TEXT('long')},
+          Img1:{type:DataTypes.TEXT('long')},
+          Img2:{type:DataTypes.TEXT('long')},
+          Img3:{type:DataTypes.TEXT('long')},
           Capacity:{type:DataTypes.INTEGER},
           Aviabilty:{type:DataTypes.BOOLEAN},
         createdAt: {

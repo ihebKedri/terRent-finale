@@ -7,15 +7,8 @@ module.exports=(sequelize,DataTypes)=>{
         Description:{type:DataTypes.STRING},
         Date:{type:DataTypes.DATE},
         Price:{type:DataTypes.DECIMAL},
-        Media:{type:DataTypes.TEXT('long')},
-        createdAt: {
-              type: DataTypes.DATE,
-              defaultValue: sequelize.literal('CURRENT_TIMESTAMP')
-            },
-            updatedAt: {
-              type: DataTypes.DATE,
-              defaultValue: sequelize.literal('CURRENT_TIMESTAMP')
-            }  
+        EventImage:{type:DataTypes.TEXT('long')},
+        
     })
         return events;
 };

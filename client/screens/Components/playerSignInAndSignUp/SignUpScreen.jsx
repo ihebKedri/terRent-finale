@@ -29,6 +29,9 @@ const SignUpScreen = () => {
     )
       .then((res) => {
         addAccount(res._tokenResponse.localId);
+        if (validUserName(username, email)) {
+           navigation.navigate("Home");
+                 alert("Welcome")     }
         navigation.navigate("HomeScreen");
         alert(`Welcome`);
       })
@@ -123,9 +126,7 @@ const SignUpScreen = () => {
           title={"Sign Up"}
           onPress={() => {
             handleSignUp();
-            if (validUserName(username, email)) {
-              return navigation.navigate("Home");
-            }
+           
           }}
           style={styles.button}
         >

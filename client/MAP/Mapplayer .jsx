@@ -17,12 +17,7 @@ const Mapplayer=({navigation:{navigate}})=> {
      longitude:10.231976,
  })
 
-  // const [tunis,settunis]=useState({
-  //   latitude:36.80638936,
-  //   longitude:10.181667,
-  //   latitudeDelta: 0.0922,
-  //   longitudeDelta: 0.0421,
-  // })
+
   const [regin,setregin]=useState({
     latitude:36.8941559,
     longitude:10.1870625,
@@ -91,7 +86,7 @@ const Mapplayer=({navigation:{navigate}})=> {
     
    
 
-    {/* this for the current location */}
+   
     
     <Marker coordinate={{
       latitude:regin.latitude,

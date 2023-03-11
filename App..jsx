@@ -13,7 +13,7 @@ import { Avatar } from "react-native-paper";
 import LoginScreen from "./client/screens/Components/playerSignInAndSignUp/LoginScreen.jsx";
 
 import SignUpScreen from "./client/screens/Components/playerSignInAndSignUp/SignUpScreen.jsx";
-// import HomeSceen from "./client/screens/Components/playerSignInAndSignUp/HomeSceen.jsx";
+
 
 import AppointmentScheduler from "./client/screens/calander.jsx";
 import Reservation from "./client/screens/owner.jsx";
@@ -23,7 +23,7 @@ import HandleOwnerTerrains from "./client/screens/ownerTerrains.jsx";
 import Confirmation from "./client/MAP/Confirmation.jsx";
 import Mapplayer from "./client/MAP/Mapplayer .jsx";
 
-import OwnerHome from "./client/screens/OwnerAuth/OwnerHome";
+
 import OwnerLogin from "./client/screens/OwnerAuth/OwnerLogin";
 import OwnerCreateAccount from "./client/screens/OwnerAuth/OwnerCreateAccount";
 
@@ -34,7 +34,7 @@ const Stack = createNativeStackNavigator();
 const App = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator>
+       <Stack.Navigator>
         {/* <Stack.Screen
           name="Landingscreen"
           component={LandingScreen}
@@ -64,7 +64,7 @@ const App = () => {
           }}
         ></Stack.Screen>
         <Stack.Screen
-          name="createowneraccount"
+          name="CreateAccount"
           component={OwnerCreateAccount}
           options={{
             statusBarColor: "black",
@@ -107,8 +107,8 @@ const App = () => {
             title: "Register Here",
           }}
         ></Stack.Screen> */}
-        <Stack.Screen name="Homemarwan" component={OwnerHome}></Stack.Screen>
-        <Stack.Screen
+         
+        {/* <Stack.Screen
           name="Home"
           component={Home}
           options={{
@@ -188,20 +188,7 @@ const App = () => {
         ></Stack.Screen>
 
         <Stack.Screen name="SignUpScreen" component={SignUpScreen} />
-        <Stack.Screen
-          name="HomeScreen"
-          component={HomeSceen}
-          options={{
-            headerStyle: {
-              backgroundColor: "black",
-            },
-            headerTitleStyle: {
-              color: "orange",
-            },
-            title: "Home",
-            headerShown: "Home",
-          }}
-        />
+    
         <Stack.Screen
           name="Reservation"
           component={Reservation}
@@ -211,8 +198,8 @@ const App = () => {
           name="AppointmentScheduler"
           component={AppointmentScheduler}
           options={{ title: "AppointmentScheduler" }}
-        ></Stack.Screen>
-        <Stack.Screen
+        ></Stack.Screen> */}
+        {/* <Stack.Screen
           name="Map"
           component={Map}
           options={{ title: "Map", headerShown: false }}
@@ -221,7 +208,7 @@ const App = () => {
           name="Confirmation"
           component={Confirmation}
           options={{ title: "Confirmation", headerShown: false }}
-        ></Stack.Screen>
+        ></Stack.Screen>  */}
         {/* <Stack.Screen
           name="Mapplayer"
           component={Mapplayer}

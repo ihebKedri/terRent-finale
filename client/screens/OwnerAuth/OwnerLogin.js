@@ -7,48 +7,47 @@ import {
 } from "react-native";
 import React, { useEffect, useState } from "react";
 import { TextInput } from "react-native";
-import { Button, Icon } from "native-base";
+import { Button } from "native-base";
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { authentification } from "../../FbConfig/config.js";
+import { auth } from "../Components/playerSignInAndSignUp/config";
 import { useNavigation } from "@react-navigation/native";
-import AsyncStorage from "@react-native-async-storage/async-storage";
-
+import AsyncStorage from '@react-native-async-storage/async-storage'
+import axios from "axios";
+import { baseUrl } from "../../urlConfig/urlConfig.js";
 const OwnerLogin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [ownerData, setOwnerData] = useState([]);
-
   const navigation = useNavigation();
-
   _storeData = async (id) => {
     try {
-      await AsyncStorage.setItem("Token", id);
+      await AsyncStorage.setItem('Token',id);
     } catch (error) {
-      console.log(error);
+      console.log(error)
     }
   };
-
-  const signInOwner = () => {
-    signInWithEmailAndPassword(authentification, email, password)
-      .then((res) => {
-        _storeData(res._tokenResponse.localId);
-      })
-      .then(() => {
-        navigation.navigate("Home");
-      })
-      .catch((err) => {
-        console.log(err);
-        alert(err);
-      });
-  };
-
+  //getting owner data by email to verify that the account is authorized to access or not
+const signInOwner = async () => {
+  try {
+    // get data from axios
+    const axiosResponse = await axios.get(`${baseUrl}owner/signInOwner/Authorization/${email}`);
+    const data = axiosResponse.data;
+    console.log(data[0].AccountConfirmation)
+    setOwnerData(data);
+   if(data[0].AccountConfirmation){
+    const res = await signInWithEmailAndPassword(auth, email, password);
+    _storeData(res._tokenResponse.localId);
+    navigation.navigate("HomeOwner");} else{
+      alert('Your account is not authorized to login please wait for confirmation')
+    }
+  } catch (error) {
+    console.log(error);
+    alert(error);
+  }
+};
   return (
     <KeyboardAvoidingView style={styles.container} behavior="padding">
       <View style={styles.inputContainer}>
-        <Text style={{ color: "darkorange", fontSize: 15, top: -90, left: 65 }}>
-          Please Login as An Owner
-        </Text>
-
         <TextInput
           placeholder="Email"
           value={email}
@@ -56,7 +55,7 @@ const OwnerLogin = () => {
             setEmail(text);
           }}
           style={styles.input}
-          placeholderTextColor="lightgrey"
+          placeholderTextColor="#999"
           keyboardType="email-address"
         />
         <TextInput
@@ -65,7 +64,7 @@ const OwnerLogin = () => {
           onChangeText={(text) => setPassword(text)}
           style={styles.input}
           secureTextEntry
-          placeholderTextColor="lightgrey"
+          placeholderTextColor="#999"
         />
         <View style={styles.buttonContainer}>
           <TouchableOpacity
@@ -78,75 +77,69 @@ const OwnerLogin = () => {
           </TouchableOpacity>
           <TouchableOpacity
             onPress={() => {
-              navigation.navigate("createowneraccount");
+              navigation.navigate("CreateAccount");
             }}
             style={styles.buttonOutLine}
           >
-            <Text style={styles.buttonOutLineText}>
-              Don't have an Account ? Register Here .
-            </Text>
+            <Text style={styles.buttonOutLineText}>Create Account</Text>
           </TouchableOpacity>
         </View>
       </View>
     </KeyboardAvoidingView>
   );
 };
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "black",
+    backgroundColor: "#1B1B1B",
     justifyContent: "center",
     alignItems: "center",
   },
   inputContainer: {
-    width: "85%",
+    width: "80%",
   },
   input: {
-    backgroundColor: "transparent",
+    backgroundColor: "#fff",
     borderWidth: 0,
-    borderBottomWidth: 1,
-    borderBottomColor: "lightgrey",
+    borderBottomWidth: 2,
+    borderBottomColor: "#33CC33",
     marginBottom: 20,
-    fontSize: 15,
+    fontSize: 18,
     paddingHorizontal: 10,
-    paddingVertical: 15,
-    color: "darkorange",
+    paddingVertical: 10,
+    color: "#1B1B1B",
+    fontWeight: "bold",
   },
   buttonContainer: {
-    flexDirection: "column",
+    flexDirection: "row",
     justifyContent: "space-between",
-    marginVertical: 10,
+    marginTop: 20,
   },
   button: {
-    backgroundColor: "transparent",
-    borderColor: "darkorange",
-    borderWidth: 0.5,
+    backgroundColor: "#33CC33",
     paddingVertical: 15,
     paddingHorizontal: 25,
-    borderRadius: 5,
+    borderRadius: 10,
     alignItems: "center",
-    bottom: -10,
   },
   buttonText: {
-    color: "darkorange",
-    fontSize: 15,
+    color: "#fff",
+    fontSize: 18,
+    fontWeight: "bold",
   },
   buttonOutLine: {
     backgroundColor: "transparent",
-    borderWidth: 0.5,
-    borderColor: "transparent",
+    borderWidth: 2,
+    borderColor: "#33CC33",
     paddingVertical: 15,
     paddingHorizontal: 25,
-    borderRadius: 5,
+    borderRadius: 10,
     alignItems: "center",
-    marginTop: 10,
-    bottom: -70,
   },
   buttonOutLineText: {
-    color: "lightgrey",
-    fontSize: 10,
+    color: "#33CC33",
+    fontSize: 18,
+    fontWeight: "bold",
   },
 });
-
 export default OwnerLogin;

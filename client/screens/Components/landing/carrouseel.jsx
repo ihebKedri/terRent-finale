@@ -10,7 +10,7 @@ const MyCarousel = () => {
   useEffect(() => {
     const timer = setInterval(() => {
       carouselRef.current?.snapToNext();
-    }, 20000); // Change the time duration here for the slide rotation
+    }, 12000); // Change the time duration here for the slide rotation
     return () => clearInterval(timer);
   }, []);
 
